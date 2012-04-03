@@ -1,6 +1,8 @@
 package com.slugsource.trees;
 
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  *
@@ -8,17 +10,28 @@ import java.util.Iterator;
  */
 public abstract class TreeIterator<T> implements Iterator<T>
 {
-
-    protected BinaryTree<T> tree;
-
-    public TreeIterator(BinaryTree<T> tree)
+    protected Queue<T> nodes;
+    
+    public TreeIterator()
     {
-        this.tree = tree;
+        nodes = new LinkedList<>();
     }
-
+    
     @Override
     public void remove()
     {
         throw new UnsupportedOperationException("This iterator does not support the remove operation.");
+    }
+
+    @Override
+    public boolean hasNext()
+    {
+        return !nodes.isEmpty();
+    }
+
+    @Override
+    public T next()
+    {
+        return nodes.poll();
     }
 }

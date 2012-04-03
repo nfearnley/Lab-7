@@ -1,5 +1,8 @@
 package com.slugsource.trees;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  *
  * @author Nathan Fearnley
@@ -9,18 +12,23 @@ public class PostOrderTreeIterator<T> extends TreeIterator<T>
 
     public PostOrderTreeIterator(BinaryTree<T> tree)
     {
-        super(tree);
+        super();
+        enqueue(tree);
     }
 
-    @Override
-    public boolean hasNext()
+    private void enqueue(BinaryTree<T> tree)
     {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public T next()
-    {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if (tree == null)
+        {
+            return;
+        }
+        try
+        {
+            enqueue(tree.getLeftSubtree());
+            enqueue(tree.getRightSubtree());
+            nodes.add(tree.getRootItem());
+        } catch (Exception e)
+        {
+        }
     }
 }
