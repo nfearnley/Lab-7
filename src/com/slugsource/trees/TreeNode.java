@@ -7,9 +7,36 @@ package com.slugsource.trees;
 public class TreeNode<T>
 {
 
+    private T payload;
     private TreeNode<T> leftTree;
     private TreeNode<T> rightTree;
-    private T payload;
+
+    public TreeNode()
+    {
+        this(null, null, null);
+    }
+    
+    public TreeNode(T payload)
+    {
+        this(payload, null, null);
+    }
+
+    public TreeNode(T payload, TreeNode<T> leftTree, TreeNode<T> rightTree)
+    {
+        this.payload = payload;
+        this.leftTree = leftTree;
+        this.rightTree = rightTree;
+    }
+
+    public T getPayload()
+    {
+        return payload;
+    }
+
+    public void setPayload(T payload)
+    {
+        this.payload = payload;
+    }
 
     public TreeNode<T> getLeftTree()
     {
@@ -29,15 +56,5 @@ public class TreeNode<T>
     public void setRightTree(TreeNode<T> rightTree)
     {
         this.rightTree = rightTree;
-    }
-
-    public T getPayload()
-    {
-        return payload;
-    }
-
-    public void setPayload(T payload)
-    {
-        this.payload = payload;
     }
 }
