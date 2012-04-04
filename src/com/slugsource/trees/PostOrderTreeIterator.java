@@ -28,18 +28,16 @@ public class PostOrderTreeIterator<T> extends TreeIterator<T>
         {
             currNode = null;
         }
+        getNext();
     }
 
     @Override
     public boolean hasNext()
     {
-        if (haveResult == false)
-        {
-            getNext();
-        }
+        getNext();
         return haveResult;
     }
-    
+
     private void getNext()
     {
         while (!haveResult && (currNode != null))
@@ -78,10 +76,7 @@ public class PostOrderTreeIterator<T> extends TreeIterator<T>
     @Override
     public T next()
     {
-        if (haveResult == false)
-        {
-            getNext();
-        }
+        getNext();
         haveResult = false;
         return result;
     }

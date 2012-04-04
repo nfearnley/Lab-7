@@ -28,18 +28,14 @@ public class InOrderTreeIterator<T> extends TreeIterator<T>
         {
             currNode = null;
         }
+        getNext();
     }
 
     @Override
     public boolean hasNext()
     {
-        {
-            if (haveResult == false)
-            {
-                getNext();
-            }
-            return haveResult;
-        }
+        getNext();
+        return haveResult;
     }
 
     private void getNext()
@@ -82,10 +78,7 @@ public class InOrderTreeIterator<T> extends TreeIterator<T>
     @Override
     public T next()
     {
-        if (haveResult == false)
-        {
-            getNext();
-        }
+        getNext();
         haveResult = false;
         return result;
     }
