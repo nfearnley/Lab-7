@@ -8,8 +8,8 @@ public class TreeNode<T>
 {
 
     private T payload;
-    private TreeNode<T> leftTree;
-    private TreeNode<T> rightTree;
+    private TreeNode<T> leftNode;
+    private TreeNode<T> rightNode;
 
     public TreeNode()
     {
@@ -21,11 +21,11 @@ public class TreeNode<T>
         this(payload, null, null);
     }
 
-    public TreeNode(T payload, TreeNode<T> leftTree, TreeNode<T> rightTree)
+    public TreeNode(T payload, TreeNode<T> leftNode, TreeNode<T> rightNode)
     {
         this.payload = payload;
-        this.leftTree = leftTree;
-        this.rightTree = rightTree;
+        this.leftNode = leftNode;
+        this.rightNode = rightNode;
     }
 
     public T getPayload()
@@ -38,23 +38,23 @@ public class TreeNode<T>
         this.payload = payload;
     }
 
-    public TreeNode<T> getLeftTree()
+    public TreeNode<T> getLeftNode()
     {
-        return leftTree;
+        return leftNode;
     }
 
-    public void setLeftTree(TreeNode<T> leftTree)
+    public void setLeftNode(TreeNode<T> leftNode)
     {
-        this.leftTree = leftTree;
+        this.leftNode = leftNode;
     }
 
-    public TreeNode<T> getRightTree()
+    public TreeNode<T> getRightNode()
     {
-        return rightTree;
+        return rightNode;
     }
 
-    public void setRightTree(TreeNode<T> rightTree)
+    public void setRightNode(TreeNode<T> rightNode)
     {
-        this.rightTree = rightTree;
+        this.rightNode = rightNode;
     }
 }

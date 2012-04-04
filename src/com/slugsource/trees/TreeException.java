@@ -4,7 +4,7 @@ package com.slugsource.trees;
  *
  * @author Nathan Fearnley
  */
-public class TreeException extends Exception
+public class TreeException extends RuntimeException
 {
 
     /**

@@ -72,17 +72,17 @@ public class BinaryTree<T> implements Iterable<T>
 
     public void attachLeft(T item)
     {
-        if (!isEmpty() && root.getLeftTree() == null)
+        if (!isEmpty() && root.getLeftNode() == null)
         {
-            root.setLeftTree(new TreeNode<>(item));
+            root.setLeftNode(new TreeNode<>(item));
         }
     }
 
     public void attachRight(T item)
     {
-        if (!isEmpty() && root.getRightTree() == null)
+        if (!isEmpty() && root.getRightNode() == null)
         {
-            root.setRightTree(new TreeNode<>(item));
+            root.setRightNode(new TreeNode<>(item));
         }
     }
 
@@ -92,12 +92,12 @@ public class BinaryTree<T> implements Iterable<T>
         {
             throw new TreeException("TreeException: Empty tree");
         }
-        if (root.getLeftTree() != null)
+        if (root.getLeftNode() != null)
         {
             throw new TreeException("TreeException: Cannot overwrite left subtree");
         }
 
-        root.setLeftTree(tree.getRootNode());
+        root.setLeftNode(tree.getRootNode());
         tree.makeEmpty();
 
     }
@@ -108,12 +108,12 @@ public class BinaryTree<T> implements Iterable<T>
         {
             throw new TreeException("TreeException: Empty tree");
         }
-        if (root.getRightTree() != null)
+        if (root.getRightNode() != null)
         {
             throw new TreeException("TreeException: Cannot overwrite left subtree");
         }
 
-        root.setRightTree(tree.getRootNode());
+        root.setRightNode(tree.getRootNode());
         tree.makeEmpty();
     }
 
@@ -124,8 +124,8 @@ public class BinaryTree<T> implements Iterable<T>
             throw new TreeException("TreeException: Empty tree");
         }
 
-        BinaryTree<T> tree = new BinaryTree<>(root.getLeftTree());
-        root.setLeftTree(null);
+        BinaryTree<T> tree = new BinaryTree<>(root.getLeftNode());
+        root.setLeftNode(null);
         return tree;
     }
 
@@ -136,8 +136,8 @@ public class BinaryTree<T> implements Iterable<T>
             throw new TreeException("TreeException: Empty tree");
         }
 
-        BinaryTree<T> tree = new BinaryTree<>(root.getRightTree());
-        root.setRightTree(null);
+        BinaryTree<T> tree = new BinaryTree<>(root.getRightNode());
+        root.setRightNode(null);
         return tree;
     }
 
@@ -148,7 +148,7 @@ public class BinaryTree<T> implements Iterable<T>
             throw new TreeException("TreeException: Empty tree");
         }
 
-        BinaryTree<T> tree = new BinaryTree<>(root.getLeftTree());
+        BinaryTree<T> tree = new BinaryTree<>(root.getLeftNode());
         return tree;
     }
 
@@ -159,7 +159,7 @@ public class BinaryTree<T> implements Iterable<T>
             throw new TreeException("TreeException: Empty tree");
         }
 
-        BinaryTree<T> tree = new BinaryTree<>(root.getRightTree());
+        BinaryTree<T> tree = new BinaryTree<>(root.getRightNode());
         return tree;
     }
 
