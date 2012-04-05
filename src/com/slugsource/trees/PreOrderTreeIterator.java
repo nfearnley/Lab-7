@@ -17,8 +17,7 @@ public class PreOrderTreeIterator<T> extends TreeIterator<T>
     private Deque<Integer> states = new LinkedList<>();
     private BinaryTree<T> currNode;
     private Integer state;
-    private boolean haveResult = false;
-    private T result = null;
+    private BinaryTree<T> resultNode = null;
 
     public PreOrderTreeIterator(BinaryTree<T> tree)
     {
@@ -35,17 +34,16 @@ public class PreOrderTreeIterator<T> extends TreeIterator<T>
     public boolean hasNext()
     {
         getNext();
-        return haveResult;
+        return resultNode != null;
     }
 
     private void getNext()
     {
-        while (!haveResult && (currNode != null))
+        while ((resultNode == null) && (currNode != null))
         {
             if (state == ENTER_FROM_PARENT)
             {
-                result = currNode.getRootItem();
-                haveResult = true;
+                resultNode = currNode;
             }
 
             if (currNode.getLeftSubtree().isEmpty() && state == ENTER_FROM_PARENT)
@@ -81,7 +79,8 @@ public class PreOrderTreeIterator<T> extends TreeIterator<T>
     public T next()
     {
         getNext();
-        haveResult = false;
+        T result = resultNode.getRootItem();
+        resultNode = null;
         return result;
     }
 }

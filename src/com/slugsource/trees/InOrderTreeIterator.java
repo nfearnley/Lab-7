@@ -17,8 +17,7 @@ public class InOrderTreeIterator<T> extends TreeIterator<T>
     Deque<Integer> states = new LinkedList<>();
     BinaryTree<T> currNode;
     Integer state;
-    private boolean haveResult = false;
-    private T result = null;
+    private BinaryTree<T> resultNode = null;
 
     public InOrderTreeIterator(BinaryTree<T> tree)
     {
@@ -35,12 +34,12 @@ public class InOrderTreeIterator<T> extends TreeIterator<T>
     public boolean hasNext()
     {
         getNext();
-        return haveResult;
+        return resultNode != null;
     }
 
     private void getNext()
     {
-        while (!haveResult && (currNode != null))
+        while ((resultNode == null) && (currNode != null))
         {
             if (currNode.getLeftSubtree().isEmpty() && state == ENTER_FROM_PARENT)
             {
@@ -48,8 +47,7 @@ public class InOrderTreeIterator<T> extends TreeIterator<T>
             }
             if (state == RETURN_FROM_LEFT)
             {
-                result = currNode.getRootItem();
-                haveResult = true;
+                resultNode = currNode;
             }
             if (currNode.getRightSubtree().isEmpty() && state == RETURN_FROM_LEFT)
             {
@@ -80,7 +78,8 @@ public class InOrderTreeIterator<T> extends TreeIterator<T>
     public T next()
     {
         getNext();
-        haveResult = false;
+        T result = resultNode.getRootItem();
+        resultNode = null;
         return result;
     }
 }
