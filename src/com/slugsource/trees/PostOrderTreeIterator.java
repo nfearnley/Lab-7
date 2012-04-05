@@ -51,6 +51,12 @@ public class PostOrderTreeIterator<T> extends TreeIterator<T>
                 state = RETURN_FROM_RIGHT;
             }
 
+            if (state == RETURN_FROM_RIGHT)
+            {
+                result = currNode.getRootItem();
+                haveResult = true;
+            }
+            
             if (state == ENTER_FROM_PARENT)
             {
                 parents.push(currNode);
@@ -65,8 +71,6 @@ public class PostOrderTreeIterator<T> extends TreeIterator<T>
                 state = ENTER_FROM_PARENT;
             } else if (state == RETURN_FROM_RIGHT)
             {
-                result = currNode.getRootItem();
-                haveResult = true;
                 currNode = parents.pollFirst();
                 state = states.pollFirst();
             }

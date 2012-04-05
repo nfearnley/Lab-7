@@ -46,10 +46,13 @@ public class InOrderTreeIterator<T> extends TreeIterator<T>
             {
                 state = RETURN_FROM_LEFT;
             }
-            if (currNode.getRightSubtree().isEmpty() && state == RETURN_FROM_LEFT)
+            if (state == RETURN_FROM_LEFT)
             {
                 result = currNode.getRootItem();
                 haveResult = true;
+            }
+            if (currNode.getRightSubtree().isEmpty() && state == RETURN_FROM_LEFT)
+            {
                 state = RETURN_FROM_RIGHT;
             }
 
@@ -61,8 +64,6 @@ public class InOrderTreeIterator<T> extends TreeIterator<T>
                 state = ENTER_FROM_PARENT;
             } else if (state == RETURN_FROM_LEFT)
             {
-                result = currNode.getRootItem();
-                haveResult = true;
                 parents.push(currNode);
                 states.push(RETURN_FROM_RIGHT);
                 currNode = currNode.getRightSubtree();
